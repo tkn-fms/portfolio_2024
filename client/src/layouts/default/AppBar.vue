@@ -27,7 +27,7 @@
     <v-col class="app-bar-elements mx-auto">
       <v-row class="pt-5">
         <v-col justify="start">
-          <h1 class="font">{{ title }}</h1>
+          <h1 class="english-font">{{ title }}</h1>
         </v-col>
         <v-col align-self="center" justify="end">
           <v-row justify="end">
@@ -40,7 +40,7 @@
 
       <v-row cols="12" class="pt-5" justify="center">
         <div v-for="(name, index) in tabNames" :key="index">
-          <p @click="navigatePage(name)" class="font tab">{{ name }}</p>
+          <p @click="navigatePage(name)" class="english-font tab">{{ name }}</p>
         </div>
       </v-row>
     </v-col>
@@ -48,11 +48,6 @@
 </template>
 
 <style scoped>
-.font {
-  font-family: droid-serif, serif;
-  font-style: normal;
-  font-weight: 400;
-}
 .icon {
   font-size: 2.5rem;
   margin: 0 15px;

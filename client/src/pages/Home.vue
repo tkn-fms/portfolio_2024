@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { ref, computed, onMounted, onUnmounted } from 'vue';
   import Card from '@/components/Card.vue';
-  import homeCards from '@/settings/homecard.json';
+  import allCard from '@/settings/allcard.json';
 
   const windowWidth = ref(window.innerWidth);
   const currentTime = new Date();
@@ -66,7 +66,7 @@
     link?: string,
     youtube?: string,
   }
-  const cardList: CardType[] = homeCards;
+  const cardList: CardType[] = allCard;
   const getCardImagePath = (imageName: string) => {
     return new URL(`../assets/${imageName}`, import.meta.url).href;
   };

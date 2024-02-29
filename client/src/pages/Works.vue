@@ -1,7 +1,67 @@
+<script lang="ts" setup>
+  import WorkCard from '@/components/WorkCard.vue';
+  import allCard from '@/settings/allcard.json';
+
+  const title: string = "Works";
+
+  interface WorkCard {
+    title: string,
+    type: string,
+    date: string,
+    image: string,
+    description: string,
+    language: string[],
+    link?: string,
+    youtube?: string,
+  }
+
+  const cardList: WorkCard[] = allCard;
+  const WorkCards: WorkCard[] = cardList.filter((card: WorkCard) => card.type === 'works');
+  const getCardImagePath = (imageName: string) => {
+    return new URL(`../assets/${imageName}`, import.meta.url).href;
+  };
+
+</script>
+
 <template>
-  <h1>This is a Works Page</h1>
+  <v-container class="about-main mx-auto">
+    <v-col justify="center">
+      <v-row class="my-auto" justify="center">
+        <p class="title english-font">{{ title }}</p>
+      </v-row>
+      <v-row class="mt-8">
+        <v-col
+          v-for="(card, index) in WorkCards"
+          :key="index"
+        >
+          <WorkCard
+            :title=card.title
+            :type=card.type
+            :date=card.date
+            :image="getCardImagePath(card.image)"
+            :description=card.description
+            :link=card.link
+            :youtube=card.youtube
+            class="mx-auto my-3"
+          ></WorkCard>
+        </v-col>
+      </v-row>
+    </v-col>
+  </v-container>
 </template>
 
-<script lang="ts" setup>
-  //
-</script>
+<style scoped>
+.about-main {
+  max-width: 1000px;
+}
+.title {
+  font-size: 3rem;
+  font-weight: lighter;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+}
+
+p, .icon {
+  color: #555;
+}
+</style>
