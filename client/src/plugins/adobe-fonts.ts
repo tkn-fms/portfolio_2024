@@ -25,9 +25,9 @@ function adobeFonts() {
   tk.onload = () => {
     clearTimeout(t);
     try {
-        Typekit.load(config);
+      Typekit.load(config);
     } catch (e) {
-        console.error("Error loading Typekit: ", e);
+      console.error("Error loading Typekit: ", e);
     }
   };
 

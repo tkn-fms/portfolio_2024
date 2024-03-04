@@ -1,8 +1,40 @@
 <script lang="ts" setup>
-  import { useRouter } from "vue-router";
+  import { ref, watch } from 'vue';
+  import { useRouter, useRoute } from "vue-router";
+
+  const route = useRoute();
+  const nowTab = ref<string>(route.path=="/"? "Home": (route.path.slice(1)).charAt(0).toUpperCase() + route.path.substring(2));
+  watch(() => route.path,
+    async path => {
+      let res: string = "";
+      if (path=="/") {
+        res = "Home";
+      } else {
+        // "/"を削除し，最初の文字を大文字に
+        let tmp: string = path.slice(1);
+        res = (tmp).charAt(0).toUpperCase() + tmp.slice(1);
+      }
+      nowTab.value = res;
+    }
+  )
 
   const router = useRouter();
+  type Icons = {
+    name: string,
+    link: string,
+  }
+  const icons: Icons[] = [
+    {
+      name: "mdi-github",
+      link: "https://github.com/tkn-fms"
+    }
+  ];
+  const moveLink = (url: string) => {
+    window.open(url, '_blank');
+  }
+
   const title: string = "Sayaka Takano";
+
   const tabNames = [
     "Home",
     "About",
@@ -27,11 +59,14 @@
     <v-col class="app-bar-elements mx-auto">
       <v-row class="pt-5">
         <v-col justify="start">
-          <h1 class="english-font">{{ title }}</h1>
+          <h1 @click="() => {router.push('/')}" class="english-font">{{ title }}</h1>
         </v-col>
         <v-col align-self="center" justify="end">
           <v-row justify="end">
-            <v-btn icon class="b-icon">
+            <v-btn
+              icon class="b-icon"
+              @click="moveLink(icons[0].link)"
+            >
               <v-icon icon="mdi-github" class="icon" />
             </v-btn>
           </v-row>
@@ -40,7 +75,7 @@
 
       <v-row cols="12" class="pt-5" justify="center">
         <div v-for="(name, index) in tabNames" :key="index">
-          <p @click="navigatePage(name)" class="english-font tab">{{ name }}</p>
+          <p @click="navigatePage(name)" :class="`english-font tab ${name === nowTab ? 'now' : ''}`">{{ name }}</p>
         </div>
       </v-row>
     </v-col>
@@ -48,18 +83,28 @@
 </template>
 
 <style scoped>
+
 .icon {
   font-size: 2.5rem;
   margin: 0 15px;
   color: #555;
 }
+.title {
+  cursor: pointer;
+}
 
 .tab {
-  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
   margin: 0 20px;
   color: #555;
+  font-size: 1.5rem;
 }
+
+.now {
+  color: #9bb4f4;
+  font-weight: bold;
+ }
 
 .app-bar-elements {
   max-width: 1000px;

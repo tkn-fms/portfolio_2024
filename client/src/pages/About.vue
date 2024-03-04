@@ -32,7 +32,7 @@
       <v-row class="my-auto" justify="center">
         <p class="title english-font">{{ title }}</p>
       </v-row>
-      <v-row class="mt-8">
+      <v-row class="mt-15">
         <v-col cols="5" align-self="center">
           <v-img
             cover

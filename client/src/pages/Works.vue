@@ -1,22 +1,12 @@
 <script lang="ts" setup>
   import WorkCard from '@/components/WorkCard.vue';
-  import allCard from '@/settings/allcard.json';
+  import allCard from '../settings/allcard.json';
+  import { CardType } from '../settings/cardtype';
 
   const title: string = "Works";
 
-  interface WorkCard {
-    title: string,
-    type: string,
-    date: string,
-    image: string,
-    description: string,
-    language: string[],
-    link?: string,
-    youtube?: string,
-  }
-
-  const cardList: WorkCard[] = allCard;
-  const WorkCards: WorkCard[] = cardList.filter((card: WorkCard) => card.type === 'works');
+  const cardList: CardType[] = allCard;
+  const WorkCards: CardType[] = cardList.filter((card: CardType) => card.type === 'works');
   const getCardImagePath = (imageName: string) => {
     return new URL(`../assets/${imageName}`, import.meta.url).href;
   };
@@ -40,6 +30,11 @@
             :date=card.date
             :image="getCardImagePath(card.image)"
             :description=card.description
+            :author=card.author
+            :conference=card.conference
+            :language=card.language
+            :repository=card.repository
+            :laboratory=card.laboratory
             :link=card.link
             :youtube=card.youtube
             class="mx-auto my-3"

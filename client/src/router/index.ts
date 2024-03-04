@@ -1,5 +1,5 @@
 // Composables
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 // import { setupLayouts } from 'virtual:generated-layouts'
 
 const routes = [
@@ -32,8 +32,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  // extendRoutes: setupLayouts,
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 

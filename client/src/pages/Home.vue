@@ -1,7 +1,8 @@
 <script lang="ts" setup>
   import { ref, computed, onMounted, onUnmounted } from 'vue';
   import Card from '@/components/Card.vue';
-  import allCard from '@/settings/allcard.json';
+  import allCard from '../settings/allcard.json';
+  import { CardType } from '../settings/cardtype';
 
   const windowWidth = ref(window.innerWidth);
   const currentTime = new Date();
@@ -52,20 +53,6 @@
     return cardList.slice(0, itemsPerRow.value);
   });
 
-  interface CardType {
-    title: string,
-    type: string,
-    date: string,
-    image: string,
-    description: string,
-    author?: boolean,
-    conference?: string,
-    language?: string[],
-    repository?: string,
-    laboratory?: string,
-    link?: string,
-    youtube?: string,
-  }
   const cardList: CardType[] = allCard;
   const getCardImagePath = (imageName: string) => {
     return new URL(`../assets/${imageName}`, import.meta.url).href;
@@ -97,11 +84,17 @@
         >
           <Card
             :title=card.title
+            :type=card.type
+            :date=card.date
             :image="getCardImagePath(card.image)"
             :description=card.description
+            :author=card.author
+            :conference=card.conference
+            :language=card.language
             :repository=card.repository
             :laboratory=card.laboratory
             :link=card.link
+            :youtube=card.youtube
             class="mx-auto"
           ></Card>
         </v-col>

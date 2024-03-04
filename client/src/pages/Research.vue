@@ -1,23 +1,9 @@
 <script lang="ts" setup>
   import ResearchCard from '@/components/ResearchCard.vue';
-  import allCard from '@/settings/allcard.json';
+  import allCard from '../settings/allcard.json';
+  import { CardType } from '../settings/cardtype';
 
   const title: string = "Research";
-
-  interface CardType {
-    title: string,
-    type: string,
-    date: string,
-    image: string,
-    description: string,
-    author: string,
-    conference: string,
-    language: string[],
-    repository?: string,
-    laboratory?: string,
-    link: string,
-    youtube: string,
-  }
 
   const cardList: CardType[] = allCard;
   const researchCards: CardType[] = cardList.filter((card: CardType) => card.type === 'research');
@@ -46,9 +32,11 @@
             :description=card.description
             :author=card.author
             :conference=card.conference
+            :language=card.language
             :repository=card.repository
             :laboratory=card.laboratory
             :link=card.link
+            :youtube=card.youtube
             class="mx-auto my-3"
           ></ResearchCard>
         </v-row>

@@ -1,72 +1,72 @@
 <script setup lang="ts">
-  import { defineProps } from 'vue';
+  import { CardType } from '../settings/cardtype';
 
-  export interface Card {
-    title: string,
-    image: string,
-    description: string,
-    repository?: string,
-    laboratory?: string,
-    link?: string,
-  }
-  const card = defineProps<Card>();
+  const wcard = defineProps<CardType>();
 </script>
 
 <template>
   <v-card
     shaped class="mx-auto"
-    width="380"  height="450"
+    width="420"  height="500"
   >
     <v-img
-      :src="card.image"
+      :src="wcard.image"
       class="align-end"
-      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.6)"
+      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
       height="220"
       aspect-ratio="1"
     >
-      <v-card-title class="card-title japanese-title-font">{{ card.title }}</v-card-title>
+      <v-card-title class="card-title japanese-title-font">{{ wcard.title }}</v-card-title>
     </v-img>
 
-    <template v-if="card.description != null">
-      <v-card-text class="card-description japanese-text-font">
-        {{card.description}}
-      </v-card-text>
-    </template>
+    <v-card-text class="card-description japanese-text-font">
+      {{ wcard.description }}
+    </v-card-text>
 
-    <v-card-actions class="card-actions">
-      <!-- 論文のカード -->
-      <template v-if="card.repository != null">
+    <v-col class="ml-3">
+      <v-row>
+        <v-icon icon="mdi-account-circle" class="icon mr-1" />
+        <p class="element-title japanese-font">{{ wcard.author }}</p>
+      </v-row>
+      <v-row class="language-field">
+        <v-col cols="1" class="px-0">
+          <v-icon icon="mdi-xml" class="icon mr-1" />
+        </v-col>
+        <v-col cols="11" class="px-0">
+          <a
+            v-for="(language, index) in wcard.language"
+            :key="index"
+            class="language-tag english-font mr-1"
+          >
+            {{ language }}
+          </a>
+        </v-col>
+      </v-row>
+    </v-col>
+
+    <div v-if="wcard.link || wcard.youtube">
+      <v-divider></v-divider>
+      <v-card-actions class="card-actions">
         <v-row justify="end" class="ma-0">
           <v-btn
+            v-if="wcard.link"
             prepend-icon="mdi-link-variant"
-            :href="card.repository"
-            class="japanese-text-font"
-          >
-            論文レポジトリ
-          </v-btn>
-          <v-btn
-            prepend-icon="mdi-link-variant"
-            :href="card.laboratory"
-            class="japanese-text-font"
-          >
-            発表報告
-          </v-btn>
-        </v-row>
-      </template>
-
-      <!-- 作品のカード -->
-      <template v-if="card.link != null">
-        <v-row justify="end" class="ma-0">
-          <v-btn
-            prepend-icon="mdi-link-variant"
-            :href="card.link"
-            class="japanese-text-font"
+            :href="wcard.link"
+            class="japanese-text-font english-text-font"
           >
             体験URL
           </v-btn>
+          <v-btn
+            v-if="wcard.youtube"
+            prepend-icon="mdi-link-variant"
+            :href="wcard.link"
+            class="english-text-font"
+          >
+            YouTube
+          </v-btn>
         </v-row>
-      </template>
-    </v-card-actions>
+      </v-card-actions>
+    </div>
   </v-card>
 </template>
 
@@ -75,12 +75,19 @@
   font-family: m-plus-rounded-2p, sans-serif;
   font-style: normal;
   font-weight: 100;
+  font-size: 1.5rem;
 }
 
 .japanese-text-font {
   font-family: m-plus-2m, sans-serif;
   font-style: normal;
   font-weight: 100;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: #555;
+  margin-left: 0px;
 }
 
 .card-title {
@@ -91,8 +98,24 @@
   text-overflow: clip !important; /* テキストの省略を防ぐ */
 }
 
+.language-field {
+  max-width: 420px;
+}
+
+.language-tag {
+	display: inline-block;
+	margin: 0 .1em .6em 0;
+	padding: .6em;
+	line-height: 1;
+	text-decoration: none;
+	color: #9bb4f4;
+	background-color: #fff;
+	border: 1px solid #9bb4f4;
+}
+
 .card-description{
   text-align: left;
+  font-size: 1.0rem;
 }
 
 .card-actions {

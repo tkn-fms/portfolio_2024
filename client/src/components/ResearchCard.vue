@@ -1,24 +1,13 @@
 <script setup lang="ts">
-  import { defineProps } from 'vue';
+  import { CardType } from '../settings/cardtype';
 
-  export interface ResearchCard {
-    title: string,
-    type: string,
-    date: string,
-    image: string,
-    description: string,
-    author: string,
-    conference: string,
-    repository?: string,
-    laboratory?: string,
-  }
-  const rcard = defineProps<ResearchCard>();
+  const rcard = defineProps<CardType>();
 </script>
 
 <template>
   <v-card
     shaped class="mx-auto"
-    width="1000" max-height="300"
+    width="1000"
   >
     <div class="d-flex flex-no-wrap justify-space-between">
       <div class="card-thumbnail d-flex align-center justify-center">
@@ -32,7 +21,7 @@
       <div>
         <v-card-title class="card-title japanese-title-font">{{ rcard.title }}</v-card-title>
         <v-card-text class="card-description japanese-text-font">
-          {{rcard.description}}
+          {{ rcard.description }}
         </v-card-text>
         <v-col class="ml-3 mb-2">
           <v-row>
@@ -46,8 +35,7 @@
         </v-col>
         <div v-if="rcard.repository || rcard.laboratory">
           <v-divider></v-divider>
-          <v-card-actions class="card-actions">
-            <!-- 論文のカード -->
+          <v-card-actions>
             <v-row justify="end" class="ma-0">
               <v-btn
                 v-if="rcard.repository"
@@ -76,7 +64,6 @@
 <style scoped>
 .card-thumbnail {
   width: 300px;
-  max-height: 300px;
   background: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.3));
 }
 .card-title {
@@ -88,5 +75,6 @@
 
 .card-description {
   text-align: left;
+  font-size: 1.0rem;
 }
 </style>
