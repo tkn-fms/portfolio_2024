@@ -7,7 +7,7 @@
 <template>
   <v-card
     shaped class="mx-auto"
-    width="380" height="430"
+    width="330" height="430"
   >
     <v-img
       :src="card.image"

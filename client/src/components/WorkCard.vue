@@ -7,7 +7,7 @@
 <template>
   <v-card
     shaped class="mx-auto"
-    width="420"  height="500"
+    width="420"  height="550"
   >
     <v-img
       :src="wcard.image"
@@ -44,9 +44,9 @@
       </v-row>
     </v-col>
 
-    <div v-if="wcard.link || wcard.youtube">
+    <div v-if="wcard.link || wcard.youtube" class="card-actions">
       <v-divider></v-divider>
-      <v-card-actions class="card-actions">
+      <v-card-actions>
         <v-row justify="end" class="ma-0">
           <v-btn
             v-if="wcard.link"
@@ -59,7 +59,7 @@
           <v-btn
             v-if="wcard.youtube"
             prepend-icon="mdi-link-variant"
-            :href="wcard.link"
+            :href="wcard.youtube"
             class="english-text-font"
           >
             YouTube
@@ -119,6 +119,7 @@
 }
 
 .card-actions {
+  width: 420px;
   position: absolute;
   bottom: 0;
   right: 0;

@@ -75,11 +75,11 @@
         <h1 class="english-font">{{ subtitle }}</h1>
       </v-row>
 
-      <v-row cols="12" justify="center">
+      <v-row justify="center">
         <v-col
           v-for="(card, index) in visibleItems"
           :key="index"
-          :cols="12" :lg="4" :sm="6"  :xl="12"
+          :cols="12" :xl="4" :lg="4" :sm="6" :xs="12"
           class="d-flex align-center justify-center"
         >
           <Card

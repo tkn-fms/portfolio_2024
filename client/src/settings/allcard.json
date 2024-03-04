@@ -3,14 +3,14 @@
     "title": "表情酒場",
     "type": "works",
     "date": "2024/02",
-    "image": "noimage.png",
-    "description": "鋭意製作中（ハッカソン）",
+    "image": "works/faceBar.png",
+    "description": "飲み会を盛り上げると共に，思い出も増やす！をコンセプトに，複数人の顔写真から個々の表情を読み取り，メニュー写真から抽出したドリンク一覧の中から個々に合うドリンクをChatGPTがど偏見で推薦するサービスです．",
     "author": "髙野沙也香, 松田さゆり, 田中佑芽, 三山貴也",
     "conference": "",
-    "language": ["Vue.js", "TypeScript", "Openai API", "Google Vision API", "Face API"],
+    "language": ["Vue.js", "TypeScript", "Openai API", "Google Vision API", "Face API", "FireBase"],
     "repository": "",
     "laboratory": "",
-    "link": "",
+    "link": "https://takano.nkmr.io/face-bar/#/",
     "youtube": ""
   },
   {
