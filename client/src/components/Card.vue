@@ -25,9 +25,9 @@
       </v-card-text>
     </template>
 
-    <div v-if="card.repository.length > 0 || card.laboratory.length > 0 || card.link.length > 0">
+    <div v-if="card.repository.length > 0 || card.laboratory.length > 0 || card.link.length > 0" class="card-actions">
       <v-divider></v-divider>
-      <v-card-actions class="card-actions">
+      <v-card-actions>
         <!-- 論文のカード -->
         <template v-if="card.repository.length > 0">
           <v-row justify="end" class="ma-0">
@@ -92,6 +92,7 @@
 }
 
 .card-actions {
+  width: 330px;
   position: absolute;
   bottom: 0;
   right: 0;

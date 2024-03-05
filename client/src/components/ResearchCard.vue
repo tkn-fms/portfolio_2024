@@ -9,21 +9,22 @@
     shaped class="mx-auto"
     width="1000"
   >
-    <div class="d-flex flex-no-wrap justify-space-between">
-      <div class="card-thumbnail d-flex align-center justify-center">
-        <v-img
-          :src="rcard.image"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.3)"
-          width="300px"
-          class="my-auto"
-        />
-      </div>
-      <div>
+    <v-row>
+      <v-col cols="3" class="d-flex flex-column pa-0">
+        <div class="d-flex align-center justify-content-center" style="flex-grow: 1;">
+          <v-img
+            :src="rcard.image"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.3)"
+            height="100%"
+          />
+        </div>
+      </v-col>
+      <v-col cols="9" class="pl-0">
         <v-card-title class="card-title japanese-title-font">{{ rcard.title }}</v-card-title>
         <v-card-text class="card-description japanese-text-font">
           {{ rcard.description }}
         </v-card-text>
-        <v-col class="ml-3 mb-2">
+        <div class="ml-5 mb-5">
           <v-row>
             <v-icon icon="mdi-account-circle" class="icon mr-1" />
             <p class="element-title english-font">{{ rcard.author }}</p>
@@ -32,8 +33,8 @@
             <v-icon icon="mdi-book" class="icon mr-1" />
             <p class="element-title english-font">{{ rcard.conference }}</p>
           </v-row>
-        </v-col>
-        <div v-if="rcard.repository || rcard.laboratory">
+        </div>
+        <div v-if="rcard.repository || rcard.laboratory" class="card-actions">
           <v-divider></v-divider>
           <v-card-actions>
             <v-row justify="end" class="ma-0">
@@ -56,16 +57,13 @@
             </v-row>
           </v-card-actions>
         </div>
-      </div>
-    </div>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
 <style scoped>
-.card-thumbnail {
-  width: 300px;
-  background: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.3));
-}
+
 .card-title {
   text-align: left;
   white-space: normal !important; /* テキストを折り返し */
@@ -76,5 +74,9 @@
 .card-description {
   text-align: left;
   font-size: 1.0rem;
+}
+
+.card-actions {
+  margin: 5px; /* 上 | 右 | 下 | 左 */
 }
 </style>

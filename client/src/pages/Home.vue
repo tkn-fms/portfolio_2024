@@ -46,7 +46,7 @@
     if (windowWidth.value >= 960) { // 'md' breakpoint
       return 3;
     } else {
-      return 1;
+      return 2;
     }
   });
   const visibleItems = computed(() => {

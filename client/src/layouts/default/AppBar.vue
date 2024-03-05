@@ -58,10 +58,10 @@
   >
     <v-col class="app-bar-elements mx-auto">
       <v-row class="pt-5">
-        <v-col justify="start">
-          <h1 @click="() => {router.push('/')}" class="english-font">{{ title }}</h1>
+        <v-col justify="start" cols="10">
+          <h1 @click="() => {router.push('/')}" class="english-font title">{{ title }}</h1>
         </v-col>
-        <v-col align-self="center" justify="end">
+        <v-col align-self="center" justify="end" cols="2">
           <v-row justify="end">
             <v-btn
               icon class="b-icon"
@@ -73,8 +73,10 @@
         </v-col>
       </v-row>
 
-      <v-row cols="12" class="pt-5" justify="center">
-        <div v-for="(name, index) in tabNames" :key="index">
+      <v-row class="pt-6" justify="center">
+        <div
+          v-for="(name, index) in tabNames" :key="index"
+        >
           <p @click="navigatePage(name)" :class="`english-font tab ${name === nowTab ? 'now' : ''}`">{{ name }}</p>
         </div>
       </v-row>
@@ -96,7 +98,7 @@
 .tab {
   font-weight: bold;
   cursor: pointer;
-  margin: 0 20px;
+  margin: 0 10px;
   color: #555;
   font-size: 1.5rem;
 }
@@ -108,5 +110,31 @@
 
 .app-bar-elements {
   max-width: 1000px;
+}
+
+@media (max-width: 450px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .icon {
+    font-size: 2.0rem;
+  }
+  .tab {
+    font-size: 1.2rem; /* スマホ表示ではタブのフォントサイズを小さくします */
+    margin: 0 5px; /* タブ間の間隔を狭めます */
+  }
+}
+
+@media (max-width: 300px) {
+  .title {
+    font-size: 1.0rem;
+  }
+  .icon {
+    font-size: 1.5rem;
+  }
+  .tab {
+    font-size: 1.0rem; /* スマホ表示ではタブのフォントサイズを小さくします */
+    margin: 0 5px; /* タブ間の間隔を狭めます */
+  }
 }
 </style>
