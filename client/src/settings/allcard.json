@@ -1,5 +1,19 @@
 [
   {
+    "title": "Make-Up FLOW: A Beauty YouTubers' Video Recommendation Method Based on Make-Up Flowcharts",
+    "type": "research",
+    "date": "2024/08",
+    "image": "noimage.png",
+    "description": "化粧工程の構造化手法の提案と，化粧フローチャートをもとにした他者間の化粧工程の類似度算出，化粧工程の類似度に基づいた化粧動画推薦の結果を英語でまとめたものです",
+    "author": "Sayaka Takano, Satoshi Nakamura",
+    "conference": "Collab Tech 2024",
+    "language": [],
+    "repository": "",
+    "laboratory": "",
+    "link": "https://link.springer.com/chapter/10.1007/978-3-031-67998-8_17",
+    "youtube": ""
+  },
+  {
     "title": "表情酒場",
     "type": "works",
     "date": "2024/02",
@@ -22,7 +36,7 @@
     "author": "髙野沙也香, 中村聡史",
     "conference": "情報処理学会論文誌",
     "language": [],
-    "repository": "",
+    "repository": "https://dl.nkmr-lab.org/papers/516",
     "laboratory": "",
     "link": "",
     "youtube": ""
